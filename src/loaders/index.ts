@@ -1,8 +1,10 @@
 import { Express } from "express";
+import databaseLoader from "./databaseLoader";
 import { expressLoader } from "./expressLoader";
 
-function appLoader(app: Express) {
+async function appLoader(app: Express) {
   expressLoader(app);
+  await databaseLoader();
 }
 
 export default appLoader
