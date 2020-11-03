@@ -1,7 +1,6 @@
 import { NextFunction, Response } from "express";
 import AppResult, { ErrorResult } from "./appResult";
 
-
 export function runCatching(
   block: (req: any, res: Response, next: NextFunction) => any
 ) {
@@ -15,7 +14,8 @@ export function runCatching(
 }
 
 export async function runCatchingWithResult<T>(
-  block: () => Promise<AppResult<T>>
+  block: () => Promise<AppResult<T>>,
+  context?: string
 ) {
   try {
     return await block();
@@ -29,7 +29,7 @@ export function rand(min: number, max: number) {
 }
 
 export function okay(res: Response, data: any) {
-  return res.status(200).send({data:data});
+  return res.status(200).send({ data });
 }
 
 export function created(res: Response) {

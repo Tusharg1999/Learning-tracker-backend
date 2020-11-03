@@ -1,5 +1,5 @@
 import { hash, genSalt } from "bcrypt";
-import { getConnection ,InsertResult} from "typeorm";
+import { getConnection } from "typeorm";
 
 async function registerNewUser(
   email: string,
