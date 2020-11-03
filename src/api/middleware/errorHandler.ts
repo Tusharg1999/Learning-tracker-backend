@@ -7,10 +7,11 @@ function appErrorHandler(
   res: Response,
   next: NextFunction
 ) {
+  if(err instanceof BaseError){
+    return res.status(err.statusCode).send({ errors: err.serializeError() });
+  }
   if (!(err instanceof BaseError)) {
-    res.status(500).send([{ message: "Internal Server Error" }]);
-  } else {
-    res.status(err.statusCode).send(err.serializeError());
+    return res.status(500).send([{ message: "Internal Server Error" }]);
   }
 }
 

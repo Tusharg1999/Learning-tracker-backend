@@ -1,7 +1,7 @@
+
 export abstract class BaseError extends Error {
   abstract statusCode: number;
-  abstract error: string | string[];
-
+  abstract error:any;
   constructor() {
     super();
     Object.setPrototypeOf(this, BaseError.prototype);

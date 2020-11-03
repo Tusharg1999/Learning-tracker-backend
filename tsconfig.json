@@ -10,7 +10,8 @@
       "preserveConstEnums": true,
       "outDir": "./dist",
       "sourceMap": true,
-      "resolveJsonModule": true
+      "resolveJsonModule": true,
+      "skipLibCheck": true
    },
    "include": [
       "src/**/*.ts"
