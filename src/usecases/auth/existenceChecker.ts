@@ -3,6 +3,8 @@ import { AlreadyExistError } from "../../errors";
 
 async function emailChecker(email: string) {
   const user = await User.findOne({ email: email });
+  console.log(user);
+  
   if (user !== undefined) {
    throw new AlreadyExistError("Email already exist")
   }

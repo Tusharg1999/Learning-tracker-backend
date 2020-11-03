@@ -16,9 +16,19 @@ async function register(req: Request, res: Response, next: NextFunction) {
   if (result.hasError()) {
     return next(result.error);
   }
-  return okay(res,result.payload)
+  return okay(res, result.payload);
 }
 
-async function login(req: Request, res: Response) {}
+async function login(req: Request, res: Response, next: NextFunction) {
+  const error = validationResult(req);
+  if (!error.isEmpty()) {
+    return next(new RequestValidationError(error.array()));
+  }
+  const result = await AuthService.login(req);
+  if (result.hasError()) {
+    return next(result.error);
+  }
+  return okay(res, result.payload);
+}
 
 export default { register, login };
