@@ -12,7 +12,7 @@ async function register(req: Request, res: Response, next: NextFunction) {
   if (!error.isEmpty()) {
     return next(new RequestValidationError(error.array()));
   }
-  const result = await AuthService.register(req,context);
+  const result = await AuthService.register(req, context);
 
   if (result.hasError()) {
     return next(result.error);
@@ -26,11 +26,20 @@ async function login(req: Request, res: Response, next: NextFunction) {
   if (!error.isEmpty()) {
     return next(new RequestValidationError(error.array()));
   }
-  const result = await AuthService.login(req,context);
+  const result = await AuthService.login(req, context);
   if (result.hasError()) {
     return next(result.error);
   }
   return okay(res, result.payload);
 }
 
-export default { register, login };
+async function passwordReset(req: Request, res: Response, next: NextFunction) {
+  const context = "PasswordReset";
+  const error = validationResult(req);
+  if (!error.isEmpty()) {
+    return next(new RequestValidationError(error.array()));
+  }
+  const result = await AuthService.passwordReset(req, context);
+  return okay(res, result.payload);
+}
+export default { register, login, passwordReset };

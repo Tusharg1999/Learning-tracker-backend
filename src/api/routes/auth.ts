@@ -15,5 +15,9 @@ router.post(
   Validator.registerValidationFunction(),
   runCatching(AuthController.register)
 );
-
+router.post(
+  "/reset-password",
+  Validator.passwordResetValidationFunction(),
+  runCatching(AuthController.passwordReset)
+);
 export { router as AuthRouter };
