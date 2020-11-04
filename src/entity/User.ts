@@ -10,14 +10,13 @@ import { ImageStore } from "./ImageStore";
 
 @Entity("user")
 class User extends BaseEntity {
-    
   @PrimaryGeneratedColumn("uuid")
   id: number;
 
-  @Column({ name: "first_name" })
+  @Column({ name: "first_name", nullable: true })
   firstName: string;
 
-  @Column({ name: "last_name" })
+  @Column({ name: "last_name", nullable: true })
   lastName: string;
 
   @Column({ name: "email" })
@@ -32,7 +31,7 @@ class User extends BaseEntity {
   @Column({ name: "salt" })
   salt: string;
 
-  @Column({ name: "age" })
+  @Column({ name: "age", nullable: true })
   age: number;
 
   @OneToOne(() => ImageStore)
