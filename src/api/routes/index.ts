@@ -1,6 +1,6 @@
 import express, { Router } from "express";
-import { AuthRouter } from "./auth";
-import { UpdateProfileRouter } from "./updateProfile";
+import { AuthRouter } from "./Auth";
+import { UpdateProfileRouter } from "./Profile";
 
 const router = Router();
 

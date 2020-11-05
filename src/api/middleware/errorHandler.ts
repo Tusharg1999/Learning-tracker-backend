@@ -11,6 +11,7 @@ function appErrorHandler(
     return res.status(err.statusCode).send({ errors: err.serializeError() });
   }
   if (!(err instanceof BaseError)) {
+    console.log(err);
     return res.status(500).send([{ message: "Internal Server Error" }]);
   }
 }
