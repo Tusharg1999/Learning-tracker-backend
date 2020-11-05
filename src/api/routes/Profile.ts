@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { runCatching } from "../../utils/appUtils";
 import { multerFileAcceptor } from "../middleware/multerFileAcceptor";
-import ProfileService from '../../services/profile'
+import ProfileService from '../../controllers/profile'
 
 const router = Router();
 

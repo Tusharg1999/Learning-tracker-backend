@@ -31,6 +31,9 @@ class User extends BaseEntity {
   @Column({ name: "salt" })
   salt: string;
 
+  @Column({ name: "bio" })
+  bio: string;
+
   @Column({ name: "age", nullable: true })
   age: number;
 

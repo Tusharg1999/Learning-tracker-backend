@@ -7,4 +7,12 @@ interface BaseDecodedToken {
   age: number;
 }
 
-export { BaseDecodedToken };
+interface UpdateProfileParams {
+  firstName?: string;
+  lastName?: string;
+  age?: number;
+  bio?:string,
+  imageUrl?:string
+}
+
+export { BaseDecodedToken,UpdateProfileParams };

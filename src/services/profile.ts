@@ -1,11 +1,16 @@
-import { NextFunction, Request, Response } from "express";
+import { assert } from "console";
+import { Request } from "express";
 
-async function changProfile(req:Request,res:Response,next:NextFunction) {
-    
+import ProfileUsecase from "../usecases/profile/profile";
+import { SuccessResult } from "../utils/appResult";
+import { runCatchingWithResult } from "../utils/appUtils";
+
+async function updateProfile(req: Request) {
+  return runCatchingWithResult(async () => {
+    await ProfileUsecase.checkValidParam(req);
+    await ProfileUsecase.updateUserProfile(req)
+    return new SuccessResult("done");
+  });
 }
 
-async function getProfile(req: Request, res: Response, next: NextFunction) {
-
-}
-
-export default { changProfile ,getProfile};
+export default { updateProfile };
