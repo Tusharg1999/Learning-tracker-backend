@@ -28,10 +28,14 @@ async function saveRefreshToken(id: string, refreshToken: string) {
     .execute();
 }
 async function verifyAccessToken(token: string) {
-  const isValid = await jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+
+  const isValid:any = await jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
   if (typeof isValid !== "object") {
     throw new InvalidAccessTokenError();
   }
+  console.log(isValid);
+  
+  return isValid;
 }
 export default {
   createAccessToken,

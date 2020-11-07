@@ -7,3 +7,4 @@ temp/
 dist/
 ormconfig.json
 .env
+.travis.yml

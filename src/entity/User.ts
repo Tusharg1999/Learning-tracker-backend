@@ -31,11 +31,11 @@ class User extends BaseEntity {
   @Column({ name: "salt" })
   salt: string;
 
-  @Column({ name: "bio" })
+  @Column({ name: "bio",nullable:true })
   bio: string;
 
   @Column({ name: "age", nullable: true })
-  age: number;
+  age: string;
 
   @Column({ name: "refresh-token", nullable: true })
   refreshToken: string;

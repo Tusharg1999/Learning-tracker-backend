@@ -7,7 +7,6 @@ import { runCatchingWithResult } from "../utils/appUtils";
 
 async function updateProfile(req: Request) {
   return runCatchingWithResult(async () => {
-    await ProfileUsecase.checkValidParam(req);
     await ProfileUsecase.updateUserProfile(req)
     return new SuccessResult("done");
   });
