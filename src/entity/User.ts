@@ -1,3 +1,4 @@
+import { type } from "os";
 import {
   Entity,
   PrimaryGeneratedColumn,
@@ -31,7 +32,7 @@ class User extends BaseEntity {
   @Column({ name: "salt" })
   salt: string;
 
-  @Column({ name: "bio",nullable:true })
+  @Column({ name: "bio", nullable: true })
   bio: string;
 
   @Column({ name: "age", nullable: true })
@@ -40,8 +41,8 @@ class User extends BaseEntity {
   @Column({ name: "refresh-token", nullable: true })
   refreshToken: string;
 
-  @OneToOne(() => ImageStore)
-  @JoinColumn()
+  @OneToOne((type) => ImageStore)
+  @JoinColumn({name:"profile"})
   profileImage: ImageStore;
 }
 
