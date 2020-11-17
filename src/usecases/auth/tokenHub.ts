@@ -2,6 +2,7 @@ import jwt from "jsonwebtoken";
 import { getConnection } from "typeorm";
 import { BaseDecodedToken } from "../../utils/dto";
 import { User } from "../../entity/User";
+import { InvalidAccessTokenError } from "../../errors";
 
 async function createAccessToken(payload: BaseDecodedToken): Promise<string> {
   const accessToken = jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, {
@@ -26,5 +27,17 @@ async function saveRefreshToken(id: string, refreshToken: string) {
     .where({ id: id })
     .execute();
 }
+async function verifyAccessToken(token: string) {
 
-export default { createAccessToken, createRefreshToken, saveRefreshToken };
+  const isValid:any = await jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+  if (typeof isValid !== "object") {
+    throw new InvalidAccessTokenError();
+  }  
+  return isValid;
+}
+export default {
+  createAccessToken,
+  createRefreshToken,
+  saveRefreshToken,
+  verifyAccessToken,
+};

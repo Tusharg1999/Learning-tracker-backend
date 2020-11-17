@@ -4,7 +4,15 @@ interface BaseDecodedToken {
   username: string;
   firstName: string;
   lastName: string;
-  age: number;
+  age: string;
 }
 
-export { BaseDecodedToken };
+interface UpdateProfileParams {
+  firstName?: string;
+  lastName?: string;
+  age?: string;
+  bio?: string;
+  imageUrl?: string;
+}
+
+export { BaseDecodedToken, UpdateProfileParams };

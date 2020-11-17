@@ -1,3 +1,4 @@
+import { type } from "os";
 import {
   BaseEntity,
   Column,
@@ -16,9 +17,11 @@ class ImageStore extends BaseEntity {
   @Column()
   src: string;
 
-  @OneToOne(() => User)
-  @JoinColumn()
-  userId: User;
+  @Column()
+  name: string;
+
+  @Column({ name: "update_at" })
+  updateAt: string;
 }
 
 export { ImageStore };
